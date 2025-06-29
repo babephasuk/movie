@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Computing Project</title>
+    <style>
+      /* CSS สำหรับการจัดสไตล์ของทั้งหน้า */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .container {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 950px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* --- Section: Team Profile --- */
+      .header {
+        color: #4a7d99;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        font-weight: 700;
+      }
+      .profile-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+      .profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fafafa;
+        width: 300px;
+        box-sizing: border-box;
+      }
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #4a7d99;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .profile-info {
+        text-align: center;
+        line-height: 1.8;
+      }
+      .profile-info h3 {
+        margin: 0;
+        color: #2c3e50;
+        font-size: 1.8em;
+        margin-bottom: 5px;
+      }
+      .profile-info p {
+        margin: 0;
+        font-size: 1.1em;
+        color: #555;
+      }
+      .info-label {
+        font-weight: bold;
+        color: #1c5270;
+      }
+
+      /* --- Section: Movie List --- */
+      .movie-form {
+        margin: 40px auto;
+        padding: 25px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fafafa;
+        text-align: left;
+      }
+      .movie-form input,
+      .movie-form button {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      .movie-form button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      .movie-form button:hover {
+        background-color: #0056b3;
+      }
+      .movie-list-header {
+        margin-top: 50px;
+        margin-bottom: 30px;
+        color: #4a7d99;
+        font-size: 2.2em;
+      }
+      .movie-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+        justify-content: center;
+      }
+      .movie-card-item {
+        background-color: #f9f9f9;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .movie-card-item img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+      }
+      .movie-info-item {
+        padding: 15px;
+        text-align: left;
+      }
+      .movie-info-item h3 {
+        margin: 0 0 10px 0;
+        color: #333;
+        font-size: 1.3em;
+      }
+      .movie-info-item p {
+        margin: 5px 0;
+        color: #555;
+        font-size: 0.9em;
+      }
+      .score {
+        font-weight: bold;
+        color: #28a745;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="header">Cloud Computing Team Profile</h1>
+
+      <div class="profile-container">
+        <div class="profile-card">
+          <img src="/static/profile1.jpg" alt="Profile Picture" class="profile-img" />
+          <div class="profile-info">
+            <h3><span class="info-label">ชื่อ:</span> พีระภัทร์ ผาสุข</h3>
+            <p><span class="info-label">ชื่อเล่น:</span> เบ๊บ</p>
+            <p><span class="info-label">รหัสนักศึกษา:</span> 67130039</p>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <img src="/static/profile2.jpg" alt="Profile Picture" class="profile-img" />
+          <div class="profile-info">
+            <h3>
+              <span class="info-label">ชื่อ:</span> ฤทธิเกียรติ สุวรรณพันธ์
+            </h3>
+            <p><span class="info-label">ชื่อเล่น:</span> ต๊ะ</p>
+            <p><span class="info-label">รหัสนักศึกษา:</span> 67130038</p>
+          </div>
+        </div>
+      </div>
+
+      ---
+
+      <h2 class="movie-list-header">Add a New Movie</h2>
+      <form class="movie-form" action="/add_movie" method="POST">
+        <input type="text" name="title" placeholder="Movie Title" required />
+        <input
+          type="number"
+          name="release_year"
+          placeholder="Release Year"
+          required
+        />
+        <button type="submit">Add Movie</button>
+      </form>
+
+      ---
+
+      <h2 class="movie-list-header">Movie List</h2>
+      <div class="movie-list">
+        {% for movie in movies %}
+        <div class="movie-card-item">
+          <img src="{{ movie.poster_url }}" alt="Poster of {{ movie.title }}" />
+          <div class="movie-info-item">
+            <h3>{{ movie.title }} ({{ movie.release_year }})</h3>
+            <p>IMDb: <span class="score">{{ movie.imdb_score }}</span></p>
+            <p>
+              Rotten Tomato:
+              <span class="score">{{ movie.rotten_tomato_score }}%</span>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

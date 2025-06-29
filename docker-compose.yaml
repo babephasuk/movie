@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # Service 1: Web Application (Flask)
+  web:
+    build: . # บอก Docker Compose ให้สร้าง image จาก Dockerfile ใน directory ปัจจุบัน
+    ports:
+      - "5000:5000" # Mapping port: Host_port:Container_port
+    volumes:
+      - .:/app # Mount โฟลเดอร์ปัจจุบัน เพื่อให้สามารถแก้ไขโค้ดแล้วเห็นผลทันที (สำหรับพัฒนา)
+    depends_on:
+      - mongodb # ให้บริการ 'web' เริ่มต้นหลังจาก 'mongodb' เริ่มต้นแล้ว
+    environment:
+      - PYTHONUNBUFFERED=1 # แสดง log ของ Python แบบ real-time
+
+  # Service 2: Database (MongoDB)
+  mongodb:
+    image: mongo:latest # ใช้ image ล่าสุดของ MongoDB จาก Docker Hub
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db # ใช้ Named Volume เพื่อเก็บข้อมูล database ไม่ให้หายไปเมื่อ container ถูกลบ
+
+# กำหนด Named Volume
+volumes:
+  mongo_data:
