@@ -1,220 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cloud Computing Project</title>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Tracker App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-      /* CSS สำหรับการจัดสไตล์ของทั้งหน้า */
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f4f9;
-        color: #333;
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        min-height: 100vh;
-      }
-      .container {
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        padding: 40px;
-        max-width: 950px;
-        width: 100%;
-        text-align: center;
-      }
-
-      /* --- Section: Team Profile --- */
-      .header {
-        color: #4a7d99;
-        font-size: 2.5em;
-        margin-bottom: 30px;
-        font-weight: 700;
-      }
-      .profile-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        margin-bottom: 50px;
-      }
-      .profile-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        background-color: #fafafa;
-        width: 300px;
-        box-sizing: border-box;
-      }
-      .profile-img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 5px solid #4a7d99;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      .profile-info {
-        text-align: center;
-        line-height: 1.8;
-      }
-      .profile-info h3 {
-        margin: 0;
-        color: #2c3e50;
-        font-size: 1.8em;
-        margin-bottom: 5px;
-      }
-      .profile-info p {
-        margin: 0;
-        font-size: 1.1em;
-        color: #555;
-      }
-      .info-label {
-        font-weight: bold;
-        color: #1c5270;
-      }
-
-      /* --- Section: Movie List --- */
-      .movie-form {
-        margin: 40px auto;
-        padding: 25px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background-color: #fafafa;
-        text-align: left;
-      }
-      .movie-form input,
-      .movie-form button {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-      }
-      .movie-form button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold;
-        transition: background-color 0.3s;
-      }
-      .movie-form button:hover {
-        background-color: #0056b3;
-      }
-      .movie-list-header {
-        margin-top: 50px;
-        margin-bottom: 30px;
-        color: #4a7d99;
-        font-size: 2.2em;
-      }
-      .movie-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 25px;
-        justify-content: center;
-      }
-      .movie-card-item {
-        background-color: #f9f9f9;
-        border: 1px solid #eee;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-      .movie-card-item img {
-        width: 100%;
-        height: 350px;
-        object-fit: cover;
-      }
-      .movie-info-item {
-        padding: 15px;
-        text-align: left;
-      }
-      .movie-info-item h3 {
-        margin: 0 0 10px 0;
-        color: #333;
-        font-size: 1.3em;
-      }
-      .movie-info-item p {
-        margin: 5px 0;
-        color: #555;
-        font-size: 0.9em;
-      }
-      .score {
-        font-weight: bold;
-        color: #28a745;
-      }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="header">Cloud Computing Team Profile</h1>
+</head>
+<body class="min-h-screen flex flex-col items-center py-8">
+    <div class="container mx-auto p-6 bg-white shadow-lg rounded-xl max-w-4xl w-full">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Movie Tracker App</h1>
 
-      <div class="profile-container">
-        <div class="profile-card">
-          <img src="/static/profile1.jpg" alt="Profile Picture" class="profile-img" />
-          <div class="profile-info">
-            <h3><span class="info-label">ชื่อ:</span> พีระภัทร์ ผาสุข</h3>
-            <p><span class="info-label">ชื่อเล่น:</span> เบ๊บ</p>
-            <p><span class="info-label">รหัสนักศึกษา:</span> 67130039</p>
-          </div>
+        <!-- ส่วนของสมาชิกในทีม -->
+        <div class="mb-10 text-center">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">สมาชิกในทีม</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
+                <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                    <img src="{{ url_for('static', filename='profile1.jpg') }}" alt="โปรไฟล์สมาชิก 1" class="profile-img rounded-full mb-2 border-2 border-blue-500">
+                    <p class="font-medium text-gray-800">ชื่อสมาชิก 1</p>
+                    <p class="text-sm text-gray-600">ID: 12345</p>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                    <img src="{{ url_for('static', filename='profile2.jpg') }}" alt="โปรไฟล์สมาชิก 2" class="profile-img rounded-full mb-2 border-2 border-green-500">
+                    <p class="font-medium text-gray-800">ชื่อสมาชิก 2</p>
+                    <p class="text-sm text-gray-600">ID: 67890</p>
+                </div>
+            </div>
         </div>
 
-        <div class="profile-card">
-          <img src="/static/profile2.jpg" alt="Profile Picture" class="profile-img" />
-          <div class="profile-info">
-            <h3>
-              <span class="info-label">ชื่อ:</span> ฤทธิเกียรติ สุวรรณพันธ์
-            </h3>
-            <p><span class="info-label">ชื่อเล่น:</span> ต๊ะ</p>
-            <p><span class="info-label">รหัสนักศึกษา:</span> 67130038</p>
-          </div>
+        <!-- ส่วนฟอร์มเพิ่มภาพยนตร์ -->
+        <div class="mb-10 bg-blue-50 p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-blue-800 mb-4 text-center">เพิ่มภาพยนตร์ใหม่</h2>
+            <form action="{{ url_for('add_movie') }}" method="POST" class="space-y-4">
+                <div>
+                    <label for="title" class="block text-blue-700 text-sm font-bold mb-2">ชื่อภาพยนตร์:</label>
+                    <input type="text" id="title" name="title" required
+                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="release_year" class="block text-blue-700 text-sm font-bold mb-2">ปีที่ฉาย:</label>
+                    <input type="number" id="release_year" name="release_year" required
+                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+                </div>
+                <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150 ease-in-out w-full">
+                    เพิ่มภาพยนตร์
+                </button>
+            </form>
         </div>
-      </div>
 
-      ---
-
-      <h2 class="movie-list-header">Add a New Movie</h2>
-      <form class="movie-form" action="/add_movie" method="POST">
-        <input type="text" name="title" placeholder="Movie Title" required />
-        <input
-          type="number"
-          name="release_year"
-          placeholder="Release Year"
-          required
-        />
-        <button type="submit">Add Movie</button>
-      </form>
-
-      ---
-
-      <h2 class="movie-list-header">Movie List</h2>
-      <div class="movie-list">
-        {% for movie in movies %}
-        <div class="movie-card-item">
-          <img src="{{ movie.poster_url }}" alt="Poster of {{ movie.title }}" />
-          <div class="movie-info-item">
-            <h3>{{ movie.title }} ({{ movie.release_year }})</h3>
-            <p>IMDb: <span class="score">{{ movie.imdb_score }}</span></p>
-            <p>
-              Rotten Tomato:
-              <span class="score">{{ movie.rotten_tomato_score }}%</span>
-            </p>
-          </div>
+        <!-- ส่วนแสดงรายการภาพยนตร์ -->
+        <div class="bg-purple-50 p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-purple-800 mb-4 text-center">รายการภาพยนตร์</h2>
+            {% if movies %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for movie in movies %}
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                    <img src="{{ movie.poster_url }}" alt="{{ movie.title }} Poster"
+                         class="w-full h-auto object-cover rounded-t-lg">
+                    <div class="p-4 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">{{ movie.title }}</h3>
+                        <p class="text-gray-700 text-sm mb-2">ปีที่ฉาย: {{ movie.release_year }}</p>
+                        <p class="text-gray-700 text-sm mb-2">คะแนน IMDb: {{ "%.1f" | format(movie.imdb_score) }}</p>
+                        <p class="text-gray-700 text-sm">คะแนน Rotten Tomatoes: {{ "%.1f" | format(movie.rotten_tomato_score) }}</p>
+                    </div>
+                    <!-- ปุ่มแก้ไขและลบ -->
+                    <div class="p-4 bg-gray-50 flex justify-around space-x-2 border-t border-gray-200">
+                        <a href="{{ url_for('edit_movie', movie_id=movie._id) }}"
+                           class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white text-center font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                            แก้ไข
+                        </a>
+                        <form action="{{ url_for('delete_movie', movie_id=movie._id) }}" method="POST" class="flex-1" onsubmit="return confirm('คุณแน่ใจหรือไม่ที่ต้องการลบภาพยนตร์เรื่องนี้?');">
+                            <button type="submit"
+                                    class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                                ลบ
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-center text-gray-600">ยังไม่มีภาพยนตร์ในรายการ เพิ่มภาพยนตร์เรื่องแรกของคุณเลย!</p>
+            {% endif %}
         </div>
-        {% endfor %}
-      </div>
     </div>
-  </body>
+</body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขภาพยนตร์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center py-8">
+    <div class="container mx-auto p-6 bg-white shadow-lg rounded-xl max-w-xl w-full">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">แก้ไขข้อมูลภาพยนตร์</h1>
+
+        <form action="{{ url_for('edit_movie', movie_id=movie._id) }}" method="POST" class="space-y-6">
+            <div>
+                <label for="title" class="block text-gray-700 text-sm font-bold mb-2">ชื่อภาพยนตร์:</label>
+                <input type="text" id="title" name="title" value="{{ movie.title }}" required
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+            </div>
+            <div>
+                <label for="release_year" class="block text-gray-700 text-sm font-bold mb-2">ปีที่ฉาย:</label>
+                <input type="number" id="release_year" name="release_year" value="{{ movie.release_year }}" required
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+            </div>
+            <div>
+                <label for="imdb_score" class="block text-gray-700 text-sm font-bold mb-2">คะแนน IMDb:</label>
+                <input type="number" step="0.1" id="imdb_score" name="imdb_score" value="{{ '%.1f' | format(movie.imdb_score) }}" required
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+            </div>
+            <div>
+                <label for="rotten_tomato_score" class="block text-gray-700 text-sm font-bold mb-2">คะแนน Rotten Tomatoes:</label>
+                <input type="number" step="0.1" id="rotten_tomato_score" name="rotten_tomato_score" value="{{ '%.1f' | format(movie.rotten_tomato_score) }}" required
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+            </div>
+            <div>
+                <label for="poster_url" class="block text-gray-700 text-sm font-bold mb-2">URL โปสเตอร์:</label>
+                <input type="url" id="poster_url" name="poster_url" value="{{ movie.poster_url }}" required
+                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+            </div>
+            
+            <div class="flex justify-between space-x-4 mt-6">
+                <button type="submit"
+                        class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+                    บันทึกการแก้ไข
+                </button>
+                <a href="{{ url_for('index') }}"
+                   class="flex-1 bg-gray-500 hover:bg-gray-600 text-white text-center font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out flex items-center justify-center">
+                    ยกเลิก
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
